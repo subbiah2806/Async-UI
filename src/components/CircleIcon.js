@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './CircleIcon.scss';
 class CircleIcon extends React.Component {
 	render({className, style, text} = this.props) {
 		return (

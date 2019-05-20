@@ -1,0 +1,38 @@
+.card {
+	margin: 7.5px 7.5px;
+	box-shadow: 0 8px 10px 1px rgba(0, 0, 0,0.14), 0 3px 14px 2px rgba(0, 0, 0,0.12), 0 5px 5px -3px rgba(0, 0, 0,0.2) !important;
+	transition: all .2s cubic-bezier(0.4,0,0.2,1);
+	&:hover {
+		transform: scale(1.02);
+	}
+	button {
+		height: 100%;
+		.MuiCardContent-root-40 {
+			height: calc(100% - 172px);
+		}
+	}
+}
+
+.bottom {
+	background-position: bottom !important;
+}
+
+.top {
+	background-position: top !important;
+}
+
+
+@media only screen and (min-width: 600px) {
+	.card {
+		width: 330px;
+	}
+	.media {
+		height: 140px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.media {
+		height: 180px;
+	}
+}

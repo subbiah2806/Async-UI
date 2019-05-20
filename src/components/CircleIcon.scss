@@ -1,0 +1,35 @@
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#CircleIcon {
+	@include flex-center;
+	flex-direction: column;
+	i {
+		@include flex-center;
+		width: 120px;
+		height: 120px;
+		color: #8080ff;
+		background: #F9F9F9;
+		box-shadow: 0 5px 15px #CCCCFF;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+		margin: 20px;
+		&:hover {
+			background: rgba(168, 165, 165, 0.712);
+			-webkit-transition: 0.2s;
+			-moz-transition: 0.2s;
+			transition: 0.2s;
+		}
+	}
+	p {
+		width: 160px;
+    text-align: center;
+    font-size: 16px;
+		line-height: 1.4;
+		font-weight: 450;
+	}
+}
