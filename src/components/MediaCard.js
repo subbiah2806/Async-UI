@@ -4,12 +4,13 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { withRouter } from 'react-router-dom'
 import { CustomSvg } from '.';
 import './MediaCard.scss';
 
-function MediaCard({image, imagePosition, svg, width, height, color, title, heading, text}) {
+function MediaCard({image, imagePosition, svg, style, title, heading, text, to, history}) {
   return (
-    <Card className="card">
+    <Card className="card" onClick={() => { if(to) history.push(to)}}>
       <CardActionArea>
         {image && <CardMedia
             className={`media ${imagePosition ? imagePosition : ''}`}
@@ -17,8 +18,8 @@ function MediaCard({image, imagePosition, svg, width, height, color, title, head
             title={title}
           />
         }
-        {svg && <div className="media">
-          <CustomSvg svgName={svg} width={width} height={height} style={{fill: color}}/>
+        {svg && <div className="media svgMedia">
+          <CustomSvg svgName={svg} style={style}/>
         </div>
         }
         <CardContent>
@@ -35,4 +36,4 @@ function MediaCard({image, imagePosition, svg, width, height, color, title, head
 }
 
 
-export default MediaCard;
+export default withRouter(MediaCard);

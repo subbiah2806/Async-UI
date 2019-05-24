@@ -7,6 +7,7 @@
 	}
 	button {
 		height: 100%;
+		display: contents;
 		.MuiCardContent-root-40 {
 			height: calc(100% - 172px);
 		}
@@ -20,7 +21,17 @@
 .top {
 	background-position: top !important;
 }
-
+.center {
+	background-position: center !important;
+}
+.svgMedia {
+	display: flex;
+	align-items: center;
+	background: gainsboro;
+	svg {
+		margin-left: 20px;
+	}
+}
 
 @media only screen and (min-width: 600px) {
 	.card {

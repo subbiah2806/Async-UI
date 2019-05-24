@@ -1,10 +1,11 @@
 import React from 'react';
+import Movie from '@material-ui/icons/Movie';
 
 class CustomSvg extends React.Component {
 	paths = () => {
 		switch (this.props.svgName) {
 			case 'github':
-					return <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/>
+				return <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8 0 3.2.9.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1 .9 2.2v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/>
 			case 'facebook':
 				return <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
 			case 'linkedIn':
@@ -13,11 +14,30 @@ class CustomSvg extends React.Component {
 				console.log('invalid svg name');
 		}
 	}
-	render({ width, height, className, style} = this.props) {
-		return (
-			<svg className={className} style={style} width={width} height={height} focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
+	matSvgs = () => {
+		const {className, style, svgName} = this.props;
+		switch (svgName) {
+			case 'mat-movie':
+					return <Movie className={className} style={style}/>;
+			default:
+				console.log('invalid svg name');
+		}
+	}
+	checkSvg = () => {
+		const {className, style, svgName} = this.props;
+		if(svgName.includes('mat-')) {
+			return this.matSvgs();
+		} else {
+			return <svg className={className} style={style} focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation">
 				{this.paths()}
 			</svg>
+		}
+	}
+	render() {
+		return (
+			<React.Fragment>
+				{this.checkSvg()}
+			</React.Fragment>
 		)
 	}
 };
