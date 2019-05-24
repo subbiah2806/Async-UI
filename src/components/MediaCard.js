@@ -10,7 +10,7 @@ import './MediaCard.scss';
 
 function MediaCard({image, imagePosition, svg, style, title, heading, text, to, history}) {
   return (
-    <Card className="card" onClick={() => { if(to) history.push(to)}}>
+    <Card className="card" onClick={() => { if(to) history.push(process.env.PUBLIC_URL + to)}}>
       <CardActionArea>
         {image && <CardMedia
             className={`media ${imagePosition ? imagePosition : ''}`}
