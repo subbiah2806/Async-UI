@@ -12,7 +12,7 @@ import deepPurple from '@material-ui/core/colors/deepPurple';
 const useitlate = "I build websites that don't fly.";
 
 const iconColor = deepPurple[300];
-const HomeFooterColor = deepPurple['800'];
+const HomeFooterColor = deepPurple[800];
 var bg = {
 	backgroundImage: `url(${space})`,
 };
@@ -42,9 +42,10 @@ class Home extends React.Component {
 				<section className="section2">
 					<Avatar alt="Display Picture" src={dp} className="dp"/>
 					<div className="MediaCard">
+						<MediaCard to="/os" image={es7} imagePosition="bottom"title="android transitions" heading="android transitions" text="Native application like transission in web UI"/>
 						<MediaCard to="/es7" image={es7} imagePosition="bottom" title="ES7" heading="ES7" text="To infinity and beyond"/>
 						<MediaCard image={es6} imagePosition="bottom" title="ES6" heading="ES6" text="The bits you will actually use"/>
-						<MediaCard svg="linkedIn" style={{height: "60", width: "60", fill: iconColor}} heading="React-Transition" text="An easy way to perform animations when a React component enters or leaves the DOM"/>
+						<MediaCard svg="mat-movie" style={{height: "60", width: "60", fill: iconColor}} heading="React-Transition" text="An easy way to perform animations when a React component enters or leaves the DOM"/>
 						<MediaCard to="/you" image={you} imagePosition="center" title="YOU" heading="YOU" text="Do you know everyone is YOU. An interactive HTML movie experience"/>
 						<MediaCard image={es7} imagePosition="bottom" title="Timeline Page" heading="Timeline Page" text="UI dashboard to record your timelines"/>
 						<MediaCard image={es7} imagePosition="bottom" title="Login Page" heading="Login Page" text="simple and elegent login page"/>

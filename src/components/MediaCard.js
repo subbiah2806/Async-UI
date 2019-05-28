@@ -18,7 +18,7 @@ function MediaCard({image, imagePosition, svg, style, title, heading, text, to, 
             title={title}
           />
         }
-        {svg && <div className="media svgMedia">
+        {svg && !image && <div className="media svgMedia">
           <CustomSvg svgName={svg} style={style}/>
         </div>
         }

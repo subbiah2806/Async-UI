@@ -1,5 +1,5 @@
 import React from 'react';
-import Movie from '@material-ui/icons/Movie';
+import * as matIcons from '@material-ui/icons';
 
 class CustomSvg extends React.Component {
 	paths = () => {
@@ -16,11 +16,16 @@ class CustomSvg extends React.Component {
 	}
 	matSvgs = () => {
 		const {className, style, svgName} = this.props;
-		switch (svgName) {
-			case 'mat-movie':
-					return <Movie className={className} style={style}/>;
-			default:
-				console.log('invalid svg name');
+		let matIcon = svgName.replace('mat-', '');
+		matIcon = matIcon.split('_').map(icon => {
+			return icon[0].toUpperCase() + icon.slice(1);
+		});
+		matIcon = matIcon.join('');
+		const Icons = matIcons[matIcon];
+		if(Icons) {
+			return <Icons className={className} style={style}/>;
+		} else {
+			console.log('specified matIcon not found', matIcon)
 		}
 	}
 	checkSvg = () => {
