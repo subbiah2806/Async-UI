@@ -48,7 +48,7 @@ class Home extends React.Component {
 						<MediaCard to="/os" image={transition} imagePosition="center" title="React transitions" heading="React transitions" text="Native application like transission in web UI, swipe left, right and up." />
 						<MediaCard to="/forms?signup" state="signup" image={signUp} imagePosition="top" title="signup Page" heading="signup Page" text="simple and elegent signup page" />
 						<MediaCard to="/forms?login" state="login" image={login} imagePosition="top" title="login Page" heading="login Page" text="simple and elegent login page" />
-						<MediaCard to="/es7" image={es7} imagePosition="bottom" title="ES7" heading="ES7" text="To infinity and beyond" />
+						<MediaCard to="/verifyCode" image={es7} imagePosition="bottom" title="verify code" heading="verify code" text="node.js mobile number verification through sms code" />
 						<MediaCard image={es6} imagePosition="bottom" title="ES6" heading="ES6" text="The bits you will actually use" />
 						<MediaCard to="/you" image={you} imagePosition="center" title="YOU" heading="YOU" text="Do you know everyone is YOU. An interactive HTML movie experience" />
 						<MediaCard image={es7} imagePosition="bottom" title="Timeline Page" heading="Timeline Page" text="UI dashboard to record your timelines" />

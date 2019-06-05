@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './routes/Home';
 import Os from './routes/Os/Os';
 import Froms from './routes/Forms/Forms';
-
+import VerifyCode from './routes/VerifyCode/VerifyCode';
 const You = lazy(() => import('./routes/You/You'));
 
 class Index extends React.Component {
@@ -24,6 +24,7 @@ class Index extends React.Component {
 				</Suspense>
 				<Route path={`${baseUrl}/os`} component={Os} />
 				<Route path={`${baseUrl}/forms`} component={Froms} />
+				<Route path={`${baseUrl}/verifyCode`} component={VerifyCode} />
 			</BrowserRouter>
 		)
 	}
