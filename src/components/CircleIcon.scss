@@ -18,11 +18,19 @@
 		-moz-border-radius: 50%;
 		border-radius: 50%;
 		margin: 20px;
-		&:hover {
+		&:active {
 			background: rgba(168, 165, 165, 0.712);
 			-webkit-transition: 0.2s;
 			-moz-transition: 0.2s;
 			transition: 0.2s;
+		}
+		@media only screen and (min-width: 600px) {
+			&:hover {
+				background: rgba(94, 92, 92, 0.712);
+				-webkit-transition: 0.2s;
+				-moz-transition: 0.2s;
+				transition: 0.2s;
+			}
 		}
 	}
 	p {
