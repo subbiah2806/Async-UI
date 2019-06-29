@@ -139,7 +139,7 @@
 					background-color: white !important;
 				}
 				> svg {
-					> path:nth-child(1) {
+					> path[fill="none"] {
 						display: none;
 					}
 				}
@@ -160,6 +160,7 @@
 				max-height: calc( 100vh - 70px );
 				position: absolute;
 				z-index: 0;
+				margin-top: -1px;
 			}
 			> .section2-sent-maincontent {
 				height: calc( 100% - 90px );
