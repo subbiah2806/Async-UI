@@ -12,7 +12,6 @@ import transition from '../assets/reat-transition.jpg';
 import deepPurple from '@material-ui/core/colors/deepPurple';
 import login from '../assets/signIn.png';
 import signUp from '../assets/SignUp.png';
-const useitlate = "I build websites that don't fly.";
 
 const iconColor = deepPurple[300];
 const HomeFooterColor = deepPurple[800];

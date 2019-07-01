@@ -59,6 +59,9 @@ class VerifyCode extends React.Component {
 		length: 10,
 		formError: false,
 		verifyCode: null,
+		userInput: ['', '', '', ''],
+		codeVerified: false,
+		countStart: 4
 	};
 	handleChange = selectedOption => {
 		const formatNameLength = selectedOption.formatName && selectedOption.formatName.split(' ').join('').length;
@@ -87,28 +90,110 @@ class VerifyCode extends React.Component {
 	sendMsg = () => {
 		const { length, inputValue, selectedOption } = this.state;
 		if (length && inputValue.length !== length) {
-			this.setState({ formError: true })
+			this.setState({ formError: true });
 		} else {
-			const verifyCode = Math.floor(Math.random() * 90000) + 10000;
-			this.setState({ verifyCode })
-			// axiosNoSsl({
-			// 	method: 'post',
-			// 	url: 'https://rest.nexmo.com/sms/json',
-			// 	params: {
-			// 		api_key: '41faeb39',
-			// 		api_secret: 'BZ1LENvOITq0yb8n',
-			// 		to: `${selectedOption.dialCode.split('+').join('')}${inputValue}`,
-			// 		from: '12065294617',
-			// 		text: `${verifyCode}. Hi this is verification code from ASYNC-UI. \nThanks for watching my work`
-			// 	},
-			// 	headers: {
-			// 		'Content-Type': 'application/x-www-form-urlencoded'
-			// 	}
-			// });
+			this.setState({ codeVerified: false });
+			const verifyCode = Math.floor(Math.random() * 9000) + 1000;
+			this.setState({ verifyCode });
+			axiosNoSsl({
+				method: 'post',
+				url: 'https://rest.nexmo.com/sms/json',
+				params: {
+					api_key: '41faeb39',
+					api_secret: 'BZ1LENvOITq0yb8n',
+					to: `${selectedOption.dialCode.split('+').join('')}${inputValue}`,
+					from: '12065294617',
+					text: `${verifyCode}. Hi this is verification code from ASYNC-UI. \nThanks for watching my work`
+				},
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				}
+			});
+		}
+	}
+	backButton = () => {
+		const { verifyCode } = this.state;
+		if (verifyCode) {
+			this.setState({ verifyCode: null })
+		} else {
+			this.props.history.goBack();
+		}
+	}
+	inputRefs = [];
+	setRef = (ref) => {
+		this.inputRefs.push(ref);
+	};
+	noOfIncorrectEntries = 0;
+	ifError = {};
+	inputError = {};
+	section2VerifiedCode = {};
+	countStart = 4;
+	verifyinputvalue = (event, key) => {
+		const { userInput, verifyCode } = this.state;
+		const newValue = userInput;
+		const uservalue = event.target.value.length;
+		if (uservalue === 1) {
+			newValue[key] = event.target.value;
+			this.setState({ userInput: newValue });
+			if (key === 3) {
+				const userEnteredValue = parseInt(userInput.join(''));
+				if (userEnteredValue === verifyCode) {
+					this.inputRefs[3].blur();
+					this.setState({ codeVerified: true });
+					this.section2VerifiedCode = {
+						height: '0%',
+						transition: 'height 500ms',
+					}
+					const time = setInterval(() => {
+						if (this.countStart > 0) {
+							this.countStart = this.countStart - 1;
+							this.setState({ countStart: this.countStart })
+						} else {
+							clearInterval(time);
+							this.setState({ codeVerified: false });
+							this.props.history.push('/')
+						}
+						console.log('countStart', this.countStart)
+					}, 1000);
+				} else {
+					this.ifError = {
+						borderColor: 'red'
+					}
+					this.inputError = {
+						backgroundColor: 'rgba(216, 93, 93, 0.4)',
+						caretColor: 'white'
+					}
+					if (this.noOfIncorrectEntries < 2) {
+						setTimeout(() => {
+							this.setState({ userInput: ['', '', '', ''] });
+							this.inputRefs[0].focus();
+						}, 250);
+					} else {
+						this.setState({ userInput: ['', '', '', ''] });
+						this.setState({ verifyCode: null })
+					}
+					this.noOfIncorrectEntries = this.noOfIncorrectEntries + 1;
+				}
+			} else {
+				this.inputRefs[key + 1].focus();
+			}
+		}
+	}
+	removeuserinput = (event, i) => {
+		var key = event.keyCode || event.charCode;
+
+		if (key === 8 || key === 46) {
+			const { userInput } = this.state;
+			const newValue = userInput;
+			if (i !== 0) {
+				newValue[i - 1] = '';
+				this.setState({ userInput: newValue });
+				this.inputRefs[i - 1].focus();
+			}
 		}
 	}
 	render() {
-		const { selectedOption, inputValue, formError, verifyCode } = this.state;
+		const { codeVerified, userInput, selectedOption, inputValue, formError, verifyCode } = this.state;
 		const section1 = {
 			backgroundColor: '#304ffe',
 			height: '50%',
@@ -122,21 +207,42 @@ class VerifyCode extends React.Component {
 			width: '100%',
 			transition: 'height .5s',
 		}
+		const section1Verified = {
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+			alignItems: 'center',
+			backgroundColor: 'white',
+			height: '100%',
+			width: '100%',
+		}
 		return (
 			<div id="VerifyCode">
-				<section className="VerifyCode-section1" style={verifyCode ? section1Sent : section1}>
-					<div className="V-marginTop">
-						<CustomSvg svgName="mat-chevron_left" style={{ fill: verifyCode ? 'black' : '#FFF', width: "40", height: "40" }} />
-						<h1 style={{ color: verifyCode ? 'black' : '#FFF' }}>
-							{verifyCode ? 'Verification Code' : 'Send Code'}
+				<section className="VerifyCode-section1" style={verifyCode ? codeVerified ? section1Verified : section1Sent : section1}>
+					{!codeVerified && <React.Fragment>
+						<div className="V-marginTop">
+							<i onClick={this.backButton}>
+								<CustomSvg className="svg-hover" svgName="mat-chevron_left" style={{ fill: verifyCode ? 'black' : '#FFF', width: "40", height: "40" }} />
+							</i>
+							<h1 style={{ color: verifyCode ? 'black' : '#FFF' }}>
+								{verifyCode ? 'Verification Code' : 'Send Code'}
+							</h1>
+							<CustomSvg className="svg-hover-not-allowed" svgName={verifyCode ? "mat-lock" : "mat-Menu"} style={{ fill: verifyCode ? 'black' : '#FFF', width: "30", height: "30" }} />
+						</div>
+						{!verifyCode && <div className="V-marginMid">
+							<CustomSvg svgName="mat-Devices" style={{ fill: '#FFF', width: "80", height: "80" }} />
+						</div>}
+					</React.Fragment>}
+					{codeVerified && <React.Fragment>
+						<h1 style={{ color: 'black' }}>
+							{'Code Verified'}
 						</h1>
-						<CustomSvg svgName={verifyCode ? "mat-lock" : "mat-Menu"} style={{ fill: verifyCode ? 'black' : '#FFF', width: "30", height: "30" }} />
-					</div>
-					{!verifyCode && <div className="V-marginMid">
-						<CustomSvg svgName="mat-Devices" style={{ fill: '#FFF', width: "80", height: "80" }} />
-					</div>}
+						<h3 style={{ color: 'black' }}>
+							{'Redirecting to homepage in '}{this.countStart}{'... seconds'}
+						</h3>
+					</React.Fragment>}
 				</section>
-				<section className={verifyCode ? "VerifyCode-section2-sent" : "VerifyCode-section2"}>
+				<section style={this.section2VerifiedCode} className={verifyCode ? "VerifyCode-section2-sent" : "VerifyCode-section2"}>
 					{!verifyCode && <React.Fragment>
 						<div className="V-marginTop">
 							<h1>
@@ -182,7 +288,7 @@ class VerifyCode extends React.Component {
 						</CircleIcon>
 					</React.Fragment>}
 					{verifyCode && <React.Fragment>
-						<svg viewBox="0 75 500 450" className="wavy" preserveAspectRatio="none">
+						<svg style={{ display: codeVerified ? 'none' : 'block' }} viewBox="0 75 500 450" className="wavy" preserveAspectRatio="none">
 							<path d="M0.00,92.27 C216.83,192.92 304.30,8.39 500.00,109.03 L500.00,0.00 L0.00,0.00 Z" style={{ stroke: 'none', fill: 'white' }}></path>
 						</svg>
 						<div className="section2-sent-maincontent">
@@ -193,6 +299,13 @@ class VerifyCode extends React.Component {
 							<div className="row">
 								<CustomSvg svgName="mat-phonelink_ring" style={{ fill: '#FFF', width: "45		", height: "45" }} />
 								<p style={{ marginLeft: '20px', color: 'white', fontSize: '20px' }}>Please type the verification <br /> code sent to {`${selectedOption.dialCode} ${inputValue.split('').map((val, index) => (index + 1 > inputValue.length - 3 || index === 0) ? val : '*').join('')}`}</p>
+							</div>
+							<div style={this.ifError} className="row border">
+								{Array.from({ length: 4 }).map((x, i) => {
+									return (
+										<input style={this.inputError} ref={this.setRef} key={i} placeholder="-" value={userInput[i]} className="verify-code-input" type="number" onChange={(e) => this.verifyinputvalue(e, i)} onKeyDown={(e) => this.removeuserinput(e, i)} />
+									)
+								})}
 							</div>
 						</div>
 					</React.Fragment>}
