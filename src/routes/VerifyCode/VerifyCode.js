@@ -116,7 +116,7 @@ class VerifyCode extends React.Component {
 		if (verifyCode) {
 			this.setState({ verifyCode: null })
 		} else {
-			this.props.history.goBack();
+			this.props.history.push('/')
 		}
 	}
 	inputRefs = [];
