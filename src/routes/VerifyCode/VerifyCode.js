@@ -5,14 +5,8 @@ import 'flag-icon-css/css/flag-icon.css';
 import './VerifyCode.scss';
 import Select from 'react-select';
 import TextField from '@material-ui/core/TextField';
-import { Agent } from 'https';
-import axios from 'axios';
+import Nexmo from 'nexmo';
 
-const axiosNoSsl = axios.create({
-	httpsAgent: new Agent({
-		rejectUnauthorized: false,
-	}),
-});
 
 const customStyles = {
 	control: (base, state) => ({
@@ -95,18 +89,22 @@ class VerifyCode extends React.Component {
 			this.setState({ codeVerified: false });
 			const verifyCode = Math.floor(Math.random() * 9000) + 1000;
 			this.setState({ verifyCode });
-			axiosNoSsl({
-				method: 'post',
-				url: 'https://rest.nexmo.com/sms/json',
-				params: {
-					api_key: '41faeb39',
-					api_secret: 'BZ1LENvOITq0yb8n',
-					to: `${selectedOption.dialCode.split('+').join('')}${inputValue}`,
-					from: '12065294617',
-					text: `${verifyCode}. Hi this is verification code from ASYNC-UI. \nThanks for watching my work`
-				},
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
+			const nexmo = new Nexmo({
+				apiKey: '41faeb39',
+				apiSecret: 'BZ1LENvOITq0yb8n',
+			})
+			const from = '12065294617';
+			const to = `${selectedOption.dialCode.split('+').join('')}${inputValue}`;
+			const text = `${verifyCode}. Hi this is verification code from ASYNC-UI. \nThanks for watching my work`
+			nexmo.message.sendSms(from, to, text, (err, responseData) => {
+				if (err) {
+					console.log(err);
+				} else {
+					if (responseData.messages[0]['status'] === "0") {
+						console.log("Message sent successfully.");
+					} else {
+						console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+					}
 				}
 			});
 		}
