@@ -184,6 +184,8 @@
 				justify-content: space-around;
 				align-items: center;
 				margin-top: 90px;
+				position: relative;
+				z-index: 4;
 				.row {
 					display: flex;
 					align-items: center;
