@@ -66,3 +66,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+###To deploy in heroku
+
+git remote add heroku https://git.heroku.com/young-garden-35017.git
+then npm run deployHeroku
