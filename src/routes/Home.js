@@ -5,7 +5,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import space from '../assets/space.jpg';
 import dp from '../assets/dp.jpg';
-import es6 from '../assets/es6.png';
+import evasHut from '../assets/evas_hut.png';
+import tamil from '../assets/tamilodu_velaiyadu.png';
 import es7 from '../assets/es7.png';
 import you from '../assets/you.jpg';
 import transition from '../assets/reat-transition.jpg';
@@ -44,22 +45,21 @@ class Home extends React.Component {
 				<section className="section2">
 					<Avatar alt="Display Picture" src={dp} className="dp" />
 					<div className="MediaCard">
-						<MediaCard to="/os" image={transition} imagePosition="center" title="React transitions" heading="React transitions" text="Native application like transission in web UI, swipe left, right and up." />
+						<MediaCard href="https://murmuring-refuge-69288.herokuapp.com/" image={tamil} imagePosition="top" title="Tamilodu Velaiyadu" heading="Tamilodu Velaiyadu" text="A webapp designed with vueJs" />
 						<MediaCard to="/forms?signup" state="signup" image={signUp} imagePosition="top" title="signup Page" heading="signup Page" text="simple and elegent signup page" />
 						<MediaCard to="/forms?login" state="login" image={login} imagePosition="top" title="login Page" heading="login Page" text="simple and elegent login page" />
-						<MediaCard to="/verifyCode" image={es7} imagePosition="bottom" title="verify code" heading="verify code" text="node.js mobile number verification through sms code" />
-						<MediaCard image={es6} imagePosition="bottom" title="ES6" heading="ES6" text="The bits you will actually use" />
-						<MediaCard to="/you" image={you} imagePosition="center" title="YOU" heading="YOU" text="Do you know everyone is YOU. An interactive HTML movie experience" />
-						<MediaCard image={es7} imagePosition="bottom" title="Timeline Page" heading="Timeline Page" text="UI dashboard to record your timelines" />
-						<MediaCard image={es7} imagePosition="bottom" title="Maps" heading="Maps" text="various kinds of map interface" />
-						<MediaCard image={es7} imagePosition="bottom" title="calender" heading="calender" text="Google calender interface" />
+						<MediaCard to="/verifyCode" image={es7} imagePosition="bottom" title="verify code" heading="verify code" text="node.js OPT verification" />
+						<MediaCard href="https://subbiah28062.github.io/Eva-s-hut/" image={evasHut} imagePosition="top" title="EVA'S Hut" heading="EVA'S Hut" text="Static webpage created with vanilla HTML,CSS and Vanilla Js" />
+						<MediaCard to="/os" image={transition} imagePosition="center" title="React transitions" heading="React transitions" text="Native application like transission in web UI, swipe left, right and up." />
+						<MediaCard heading="under construction" text="under construction" />
+						<MediaCard heading="under construction" text="under construction" />
 					</div>
 					<div className="samplePage">
 
 					</div>
 				</section>
 				<section className="section3">
-					<CircleIcon href="https://www.linkedin.com/in/subbiah-chandru-31b339184/" text="I build websites, my experience builds my resume">
+					<CircleIcon href="https://www.linkedin.com/in/subbiah-chandramouli-31b339184" text="I build websites, my experience builds my resume">
 						<CustomSvg svgName="linkedIn" style={{ fill: iconColor, width: "50", height: "50" }} />
 					</CircleIcon>
 					<CircleIcon href="https://github.com/subbiah28062/Async-UI" text="I write code that doesn't bite.">
@@ -77,9 +77,9 @@ class Home extends React.Component {
 					</a>
 					<div className="buttons">
 						<div className="buttons-left">
-							<Fab href="https://www.linkedin.com/in/subbiah-chandru-31b339184/" variant="extended" size="medium" component="button" aria-label="Add"> LinkedIn</Fab>
-							<Fab href="https://github.com/subbiah28062/Async-UI" variant="extended" size="medium" component="button" aria-label="Add"> Github</Fab>
-							<Fab href="https://www.facebook.com/profile.php?id=100005246984751" variant="extended" size="medium" component="button" aria-label="Add"> Facebook</Fab>
+							<Fab target="_blank" href="https://www.linkedin.com/in/subbiah-chandramouli-31b339184" variant="extended" size="medium" component="button" aria-label="Add"> LinkedIn</Fab>
+							<Fab target="_blank" href="https://github.com/subbiah28062/Async-UI" variant="extended" size="medium" component="button" aria-label="Add"> Github</Fab>
+							<Fab target="_blank" href="https://www.facebook.com/profile.php?id=100005246984751" variant="extended" size="medium" component="button" aria-label="Add"> Facebook</Fab>
 						</div>
 						<p>Web developer based on <br /> Bay area, california</p>
 					</div>

@@ -4,7 +4,7 @@ class CircleIcon extends React.Component {
 	href = () => {
 		const href = this.props.href;
 		if (href) {
-			window.location = href;
+			window.open(href);
 		}
 	}
 	render({ className, style, istyle, text, onClick, IPStyle } = this.props) {

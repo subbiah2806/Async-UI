@@ -8,9 +8,14 @@ import { withRouter } from 'react-router-dom'
 import { CustomSvg } from '.';
 import './MediaCard.scss';
 
-function MediaCard({image, imagePosition, svg, style, title, heading, text, to, history}) {
+function handleClick(history, to, href) {
+  if(to) history.push(process.env.PUBLIC_URL + to)
+  if(href) window.open(href); 
+
+}
+function MediaCard({image, imagePosition, svg, style, title, heading, text, to, history, href}) {
   return (
-    <Card className="card" onClick={() => { if(to) history.push(process.env.PUBLIC_URL + to)}}>
+    <Card className="card" onClick={() => { handleClick(history, to, href)}}>
       <CardActionArea>
         {image && <CardMedia
             className={`media ${imagePosition ? imagePosition : ''}`}
