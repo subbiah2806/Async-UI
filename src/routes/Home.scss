@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Overpass+Mono|Skranji&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Aubrey|Baloo+Bhai&display=swap');
+
 @mixin flex-center {
 	display: flex;
 	justify-content: center;
@@ -16,10 +19,10 @@
 
 #Home {
 	font-family: Roboto,Helvetica,Arial,sans-serif;
+	opacity: 0;
 	.section1 {
 		background-size: cover;
 		background-position: 50%;
-		opacity: .97;
 		.content {
 			height: 100%;
 			width: 100%;
@@ -28,14 +31,61 @@
 				@include flex-center;
 				flex-direction: column;
 				height: calc(100% - 110px);
+				.headerName {
+					display: none;
+					opacity: 0;
+				}
+				.animateTyping {
+					font-family: 'Skranji', cursive;
+					font-family: 'Overpass Mono', monospace;
+				}
 				h1 {
 					color: lightgrey;
-					font-size: 3.5rem;
 					margin-bottom: 0px;
+					font-family: 'Skranji', cursive;
+					font-family: 'Overpass Mono', monospace;
 				}
 				h2 {
 					color: lightgrey;
+					font-family: 'Baloo Bhai', cursive;
+					font-family: 'Aubrey', cursive;
 				}
+				@media (max-width: 575.98px) {
+          h1 {
+            font-size: 12.2vw;
+            line-height: 1.05em;
+          }
+        }
+				  
+				  // Small devices (landscape phones, 576px and up)
+        @media (min-width: 576px) and (max-width: 767.98px) {
+          h1 {
+            font-size: 13.2vw;
+            line-height: 1.03em;
+          }
+        }
+				  
+        // Medium devices (tablets, 768px and up)
+        @media (min-width: 768px) and (max-width: 991.98px) {
+          h1 {
+            font-size: 13vw;
+            line-height: 1em;
+          }
+          h2 {
+            font-size: 3vw;
+          }
+        }
+				  
+        // Large devices (desktops, 992px and up)
+        @media (min-width: 992px) {
+					h1 {
+					  font-size: 7.5vw;
+					  line-height: 1em;
+					}
+					h2 {
+					  font-size: 3vw;
+					}
+        }
 			}
 		}
 	}
@@ -58,7 +108,7 @@
 		.MediaCard {
 			z-index: inherit;
 			display: flex;
-			margin: 80px 0 7.5px;
+			margin: calc( 19vh - 60px ) 0 7.5px;
 		}
 		.samplePage {
 			height: 100vh;

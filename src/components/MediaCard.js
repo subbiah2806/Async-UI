@@ -13,9 +13,9 @@ function handleClick(history, to, href) {
   if(href) window.open(href); 
 
 }
-function MediaCard({image, imagePosition, svg, style, title, heading, text, to, history, href}) {
+function MediaCard({id, image, imagePosition, svg, style, title, heading, text, to, history, href}) {
   return (
-    <Card className="card" onClick={() => { handleClick(history, to, href)}}>
+    <Card className="card" id={id} onClick={() => { handleClick(history, to, href)}}>
       <CardActionArea>
         {image && <CardMedia
             className={`media ${imagePosition ? imagePosition : ''}`}
