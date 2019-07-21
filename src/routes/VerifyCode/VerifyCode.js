@@ -38,6 +38,7 @@ class VerifyCode extends React.Component {
 							return `${value}*`
 						}
 					}
+					return ''
 				});
 				formatName = formatName.join('');
 			}
@@ -80,28 +81,29 @@ class VerifyCode extends React.Component {
 		}
 	}
 	sendMsg = () => {
-		const { length, inputValue, selectedOption } = this.state;
+		const { length, inputValue } = this.state;
 		if (length && inputValue.length !== length) {
 			this.setState({ formError: true });
 		} else {
 			this.setState({ codeVerified: false });
 			const verifyCode = Math.floor(Math.random() * 9000) + 1000;
 			this.setState({ verifyCode });
-			window.alert(`SMS service is not free at your location, so here ${verifyCode} is your verification code`)
+			window.alert(`SMS service is not free at your location, so here ${verifyCode} is your verification code`);
+			setTimeout(() => {
+				document.getElementById(`input0`).focus();
+			});
 		}
 	}
 	backButton = () => {
 		const { verifyCode } = this.state;
 		if (verifyCode) {
-			this.setState({ verifyCode: null })
+			this.inputError = {}
+			this.ifError = {}
+			this.setState({ userInput: ['', '', '', ''], verifyCode: null })
 		} else {
 			this.props.history.push('/')
 		}
 	}
-	inputRefs = [];
-	setRef = (ref) => {
-		this.inputRefs.push(ref);
-	};
 	noOfIncorrectEntries = 0;
 	ifError = {};
 	inputError = {};
@@ -117,7 +119,7 @@ class VerifyCode extends React.Component {
 			if (key === 3) {
 				const userEnteredValue = parseInt(userInput.join(''));
 				if (userEnteredValue === verifyCode) {
-					this.inputRefs[3].blur();
+					document.getElementById(`input3`).blur();
 					this.setState({ codeVerified: true });
 					this.section2VerifiedCode = {
 						height: '0%',
@@ -132,7 +134,6 @@ class VerifyCode extends React.Component {
 							this.setState({ codeVerified: false });
 							this.props.history.push('/')
 						}
-						console.log('countStart', this.countStart)
 					}, 1000);
 				} else {
 					this.ifError = {
@@ -145,16 +146,19 @@ class VerifyCode extends React.Component {
 					if (this.noOfIncorrectEntries < 2) {
 						setTimeout(() => {
 							this.setState({ userInput: ['', '', '', ''] });
-							this.inputRefs[0].focus();
+							document.getElementById(`input0`).focus();
 						}, 250);
+						this.noOfIncorrectEntries = this.noOfIncorrectEntries + 1;
 					} else {
-						this.setState({ userInput: ['', '', '', ''] });
-						this.setState({ verifyCode: null })
+						this.noOfIncorrectEntries = 0;
+						this.inputError = {}
+						this.ifError = {}
+						this.setState({ userInput: ['', '', '', ''], verifyCode: null })
 					}
-					this.noOfIncorrectEntries = this.noOfIncorrectEntries + 1;
 				}
 			} else {
-				this.inputRefs[key + 1].focus();
+				const nextInput = document.getElementById(`input${key + 1}`);
+				nextInput.focus();
 			}
 		}
 	}
@@ -167,7 +171,7 @@ class VerifyCode extends React.Component {
 			if (i !== 0) {
 				newValue[i - 1] = '';
 				this.setState({ userInput: newValue });
-				this.inputRefs[i - 1].focus();
+				document.getElementById(`input${i - 1}`).focus();
 			}
 		}
 	}
@@ -282,7 +286,7 @@ class VerifyCode extends React.Component {
 							<div style={this.ifError} className="row border">
 								{Array.from({ length: 4 }).map((x, i) => {
 									return (
-										<input style={this.inputError} ref={this.setRef} key={i} placeholder="-" value={userInput[i]} className="verify-code-input" type="number" onChange={(e) => this.verifyinputvalue(e, i)} onKeyDown={(e) => this.removeuserinput(e, i)} />
+										<input style={this.inputError} id={`input${i}`} key={i} placeholder="-" value={userInput[i]} className="verify-code-input" type="number" onChange={(e) => this.verifyinputvalue(e, i)} onKeyDown={(e) => this.removeuserinput(e, i)} />
 									)
 								})}
 							</div>

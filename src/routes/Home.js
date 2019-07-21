@@ -26,6 +26,7 @@ class Home extends React.Component {
 		scrollType: 'scroll'
 	};
 	componentDidMount() {
+		// eslint-disable-next-line
 		const plugins = [TextPlugin, CSSPlugin];
 		const sr = ScrollReveal();
 		if (!initialMount) {
@@ -95,6 +96,7 @@ class Home extends React.Component {
 				<section style={bg} className="section1">
 					<div className="content">
 						<div className="content-margin">
+							{/* eslint-disable-next-line */}
 							<h1 className="animateTyping"></h1>
 							<h1 className="headerName">I am Subbiah</h1>
 							<h2 className="headerName">-Web Developer</h2>
