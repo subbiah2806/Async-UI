@@ -28,13 +28,14 @@
     "twilio": "^3.32.0"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "npm run build && gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deployHeroku": "git push heroku master"
+    "removeHeroku": "git remote rm heroku",
+    "addHeroku": "git remote add heroku https://git.heroku.com/young-garden-35017.git",
+    "deployHeroku": "npm run removeHeroku && npm run addHeroku && git push heroku master"
   },
   "eslintConfig": {
     "extends": "react-app"
