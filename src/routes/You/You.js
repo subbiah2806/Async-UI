@@ -11,7 +11,7 @@ class You extends React.Component {
 	};
 	render() {
 		return (
-			<div id="You" style={{backgroundImage: `url(${wallpaper})`}}>
+			<div id="You" style={{ backgroundImage: `url(${wallpaper})` }}>
 			</div>
 		)
 	}

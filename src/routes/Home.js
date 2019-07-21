@@ -13,7 +13,7 @@ import deepPurple from '@material-ui/core/colors/deepPurple';
 import login from '../assets/signIn.png';
 import signUp from '../assets/SignUp.png';
 import ScrollReveal from 'scrollreveal'
-import {TimelineLite,TextPlugin,CSSPlugin,Linear} from "gsap/all";
+import { TimelineLite, TextPlugin, CSSPlugin, Linear } from "gsap/all";
 let initialMount = false;
 const iconColor = deepPurple[300];
 const HomeFooterColor = deepPurple[800];
@@ -28,18 +28,18 @@ class Home extends React.Component {
 	componentDidMount() {
 		const plugins = [TextPlugin, CSSPlugin];
 		const sr = ScrollReveal();
-		if(!initialMount) {
-			initialMount = true;		
+		if (!initialMount) {
+			initialMount = true;
 			const section1FaceIn = new TimelineLite({});
 			section1FaceIn
 				.to("#Home", 2, { autoAlpha: 1 }, '+=1')
-				.add(()=> {
+				.add(() => {
 					window.scrollTo({
 						top: 0,
 						behavior: "smooth"
 					});
 				}, '-=2')
-				.from(".dp", 2, { scale: 1.5, rotation: 180}, '-=2')
+				.from(".dp", 2, { scale: 1.5, rotation: 180 }, '-=2')
 				.to(`.animateTyping`, 1, {
 					text: `I am Subbiah`,
 					yoyo: true,
@@ -59,7 +59,7 @@ class Home extends React.Component {
 					display: 'block',
 					ease: Linear.easeNone
 				});
-		}else {
+		} else {
 			const section1FaceIn = new TimelineLite({});
 			section1FaceIn
 				.to("#Home", .001, { autoAlpha: 1 })
@@ -69,20 +69,20 @@ class Home extends React.Component {
 				});
 			setTimeout(() => {
 				sr.reveal('.card', {
-					duration   : 1,
+					duration: 1,
 				}, 1);
 			});
 		}
 		setTimeout(() => {
 			sr.reveal('.card', {
-				duration   : 600,
-				distance   : '20px',
-				easing     : 'ease-out',
-				origin     : 'bottom',
-				reset      : true,
-				viewFactor : 0,
+				duration: 600,
+				distance: '20px',
+				easing: 'ease-out',
+				origin: 'bottom',
+				reset: true,
+				viewFactor: 0,
 			}, 150);
-		},500);
+		}, 500);
 	};
 	componentDidUpdate() {
 	};

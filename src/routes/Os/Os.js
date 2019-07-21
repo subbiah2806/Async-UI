@@ -9,9 +9,9 @@ import NotificationBar from './NotificationBar';
 class Os extends React.Component {
 
 	componentDidMount() {
-    new Swiper('.swiper-container-main', {
+		new Swiper('.swiper-container-main', {
 			direction: 'vertical',
-      effect: 'fade',
+			effect: 'fade',
 		});
 	};
 	componentDidUpdate() {
@@ -26,18 +26,18 @@ class Os extends React.Component {
 					<div className="swiper-wrapper">
 						<div className="swiper-slide">
 							<div className="background">
-								<img src={wallpaper} alt="background Img"/>
+								<img src={wallpaper} alt="background Img" />
 							</div>
 							<Homepage />
 						</div>
 						<div className="swiper-slide">
 							<div className="background blur">
-								<img src={wallpaper} alt="background Img blured"/>
+								<img src={wallpaper} alt="background Img blured" />
 							</div>
 							<Menu />
 						</div>
 					</div>
-    		</div>
+				</div>
 			</div>
 		)
 	}
