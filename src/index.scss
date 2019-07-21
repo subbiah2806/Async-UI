@@ -1,0 +1,34 @@
+.mousepointer {
+	position: fixed;
+	pointer-events: none;
+	z-index: 998;
+	border-radius: 80%;
+}
+#mousePointer {
+	top: 0;
+	left: 0;
+	width: 10px;
+	height: 10px;
+	margin: -5px 0 0 -5px;
+	border: 1px solid white;
+	mix-blend-mode: exclusion;
+	backface-visibility: hidden;
+	background: black;
+}
+body {
+	::selection {
+		color: #fff;
+		background-color: #5918df;
+	}
+}
+@media (min-width: 576px) {
+	body {
+		cursor: none;
+	}
+	.MuiButtonBase-root{
+		cursor: none !important;
+	}
+	a:-webkit-any-link {
+		cursor: none !important;
+	}
+}

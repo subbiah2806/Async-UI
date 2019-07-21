@@ -13,7 +13,7 @@ import deepPurple from '@material-ui/core/colors/deepPurple';
 import login from '../assets/signIn.png';
 import signUp from '../assets/SignUp.png';
 import ScrollReveal from 'scrollreveal'
-import { TimelineLite, TextPlugin, CSSPlugin, Linear } from "gsap/all";
+import { TimelineLite, Linear } from "gsap/all";
 let initialMount = false;
 const iconColor = deepPurple[300];
 const HomeFooterColor = deepPurple[800];
@@ -26,8 +26,6 @@ class Home extends React.Component {
 		scrollType: 'scroll'
 	};
 	componentDidMount() {
-		// eslint-disable-next-line
-		const plugins = [TextPlugin, CSSPlugin];
 		const sr = ScrollReveal();
 		if (!initialMount) {
 			initialMount = true;

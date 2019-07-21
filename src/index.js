@@ -6,10 +6,14 @@ import Os from './routes/Os/Os';
 import Froms from './routes/Forms/Forms';
 import VerifyCode from './routes/VerifyCode/VerifyCode';
 import http from 'http';
+import './index.scss';
+import { TweenLite, TextPlugin, CSSPlugin } from "gsap/all";
 const You = lazy(() => import('./routes/You/You'));
 
 class Index extends React.Component {
 	componentDidMount() {
+		// eslint-disable-next-line
+		const plugins = [TextPlugin, CSSPlugin];
 		const isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1; //&& ua.indexOf("mobile");
 		if (isAndroid) {
 			document.write('<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, height=' + window.innerHeight + '">');
@@ -17,11 +21,31 @@ class Index extends React.Component {
 		setInterval(function () {
 			http.get("https://async-ui.herokuapp.com/");
 		}, 300000);
+		if (this.isnotmobile()) {
+			window.addEventListener("mousemove", this.moveCircle, true);
+		}
+	};
+	componentWillUnmount() {
+		if (this.isnotmobile()) {
+			window.removeEventListener("mousemove", this.moveCircle);
+		}
+	}
+	isnotmobile() {
+		return window.innerWidth > 575.98;
+	};
+	moveCircle(e) {
+		TweenLite.to("#mousePointer", 0.001, {
+			css: {
+				x: e.clientX,
+				y: e.clientY
+			},
+		});
 	};
 	render() {
 		const baseUrl = process.env.PUBLIC_URL;
 		return (
 			<BrowserRouter>
+				{this.isnotmobile() && <div className="mousepointer" id="mousePointer"></div>}
 				<Route exact path={`${baseUrl}/`} component={Home} />
 				<Suspense fallback={<h1> </h1>}>
 					<Route path={`${baseUrl}/you`} component={You} />
