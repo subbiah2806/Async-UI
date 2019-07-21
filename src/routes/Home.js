@@ -62,7 +62,11 @@ class Home extends React.Component {
 		}else {
 			const section1FaceIn = new TimelineLite({});
 			section1FaceIn
-				.to("#Home", .001, { autoAlpha: 1 });
+				.to("#Home", .001, { autoAlpha: 1 })
+				.to(`.headerName`, .001, {
+					autoAlpha: 1,
+					display: 'block'
+				});
 			setTimeout(() => {
 				sr.reveal('.card', {
 					duration   : 1,
