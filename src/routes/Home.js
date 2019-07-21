@@ -66,26 +66,33 @@ class Home extends React.Component {
 					autoAlpha: 1,
 					display: 'block'
 				});
+			if (!this.isnotmobile()) {
+				setTimeout(() => {
+					sr.reveal('.card', {
+						duration: 1,
+					}, 1);
+				});
+			}
+		}
+		if (!this.isnotmobile()) {
 			setTimeout(() => {
 				sr.reveal('.card', {
-					duration: 1,
-				}, 1);
-			});
+					duration: 600,
+					distance: '20px',
+					easing: 'ease-out',
+					origin: 'bottom',
+					reset: true,
+					viewFactor: 0,
+				}, 150);
+			}, 500);
 		}
-		setTimeout(() => {
-			sr.reveal('.card', {
-				duration: 600,
-				distance: '20px',
-				easing: 'ease-out',
-				origin: 'bottom',
-				reset: true,
-				viewFactor: 0,
-			}, 150);
-		}, 500);
 	};
 	componentDidUpdate() {
 	};
 	componentWillUnmount() {
+	};
+	isnotmobile() {
+		return window.innerWidth > 575.98;
 	};
 	render() {
 		return (
@@ -104,7 +111,7 @@ class Home extends React.Component {
 				<section className="section2">
 					<Avatar alt="Display Picture" src={dp} className="dp" />
 					<div className="MediaCard">
-						<MediaCard id="media1" href="https://murmuring-refuge-69288.herokuapp.com/" image={tamil} imagePosition="top" title="Tamilodu Velaiyadu" heading="Tamilodu Velaiyadu" text="A webapp designed with vueJs" />
+						<MediaCard id="media1" href="https://tamilodu-vilaiyadu.herokuapp.com/" image={tamil} imagePosition="top" title="Tamilodu Velaiyadu" heading="Tamilodu Velaiyadu" text="A webapp designed with vueJs" />
 						<MediaCard id="media2" to="/forms?signup" state="signup" image={signUp} imagePosition="top" title="signup Page" heading="signup Page" text="simple and elegent signup page" />
 						<MediaCard id="media3" to="/forms?login" state="login" image={login} imagePosition="top" title="login Page" heading="login Page" text="simple and elegent login page" />
 						<MediaCard id="media4" to="/verifyCode" image={verifyCode} imagePosition="top" title="verify code" heading="verify code" text="node.js OPT verification" />
