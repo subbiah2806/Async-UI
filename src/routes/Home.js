@@ -46,7 +46,7 @@ class Home extends React.Component {
 					repeat: 1,
 					repeatDelay: 1,
 					ease: Linear.easeNone
-				})
+				}, '-=1')
 				.to(`.animateTyping`, 1, {
 					text: `Web Developer`,
 					yoyo: true,
@@ -113,8 +113,123 @@ class Home extends React.Component {
 						<MediaCard id="media7" heading="under construction" text="under construction" />
 						<MediaCard id="media8" heading="under construction" text="under construction" />
 					</div>
-					<div className="samplePage">
+					<div className="about">
+						<div className="aboutMargin">
+							<div className="aboutColumns">
+								<div data-line-nr="01"><div className="blueviolet">class</div><div className="yellow"> AboutMe </div>{`{`}</div>
 
+								<div data-line-nr="02"><div className="lightGrey">··</div><div className="dimGrey">{`// I'm ambitious and love new challenges :)`}</div></div>
+								<div data-line-nr="03"><div className="lightGrey">··</div><div className="dimGrey">{`// My vast variety of skills is continuously expanding.`}</div></div>
+
+								<div data-line-nr="04"><div className="lightGrey">··</div><div className="blueviolet">constructor</div>{`() {`}</div>
+								<div data-line-nr="05">
+									<div className="lightGrey">····</div>
+									<div className="red">this</div>
+									.<div className="green">name </div>
+									<div className="red">= </div>
+									<div className="darkGreen">'Subbiah Chandramouli'</div>
+								</div>
+								<div data-line-nr="06">
+									<div className="lightGrey">····</div>
+									<div className="red">this</div>
+									.<div className="green">dayOfBirthTimestamp </div>
+									<div className="red">= </div>
+									<div className="darkGreen">772841730000</div>
+								</div>
+								<div data-line-nr="07">
+									<div className="lightGrey">····</div>
+									<div className="red">this</div>
+									.<div className="green">email </div>
+									<div className="red">= </div>
+									<div className="darkGreen">'subbiah2806@gmail.com'</div>
+								</div>
+								<div data-line-nr="08"><div className="lightGrey">··</div>{`}`}</div>
+
+								<div data-line-nr="09"><div className="lightGrey">··</div><div className="yellow">workExperience</div>{`() {`}</div>
+								<div data-line-nr="10"><div className="lightGrey">····</div><div className="blueviolet">return </div>{`[`}</div>
+								<div data-line-nr="11">
+									<div className="lightGrey">······</div>
+									{`{ `}
+									<div className="darkGreen">'July 2018 – Present' </div>
+									{`: `}
+									<div className="darkGreen">'Front-end Developer at Apple' </div>
+									{`}`}
+								</div>
+								<div data-line-nr="12"><div className="lightGrey">····</div>{`]`}</div>
+								<div data-line-nr="13"><div className="lightGrey">··</div>{`}`}</div>
+
+								<div data-line-nr="14"><div className="lightGrey">··</div><div className="yellow">education</div>{`() {`}</div>
+								<div data-line-nr="15"><div className="lightGrey">····</div><div className="blueviolet">return </div>{`[`}</div>
+								<div data-line-nr="16">
+									<div className="lightGrey">······</div>
+									{`{ `}
+									<div className="darkGreen">'2016 – 2018' </div>
+									{`: `}
+									<div className="darkGreen">'Texas A&M University, Kingsville' </div>
+									{`}`}
+								</div>
+								<div data-line-nr="17">
+									<div className="lightGrey">······</div>
+									{`{ `}
+									<div className="darkGreen">'2011 – 2015' </div>
+									{`: `}
+									<div className="darkGreen">'Saveetha Engineering College' </div>
+									{`}`}
+								</div>
+								<div data-line-nr="18"><div className="lightGrey">····</div>{`]`}</div>
+								<div data-line-nr="19"><div className="lightGrey">··</div>{`}`}</div>
+
+								<div data-line-nr="20"><div className="lightGrey">··</div><div className="yellow">skills</div>{`() {`}</div>
+								<div data-line-nr="21"><div className="lightGrey">····</div><div className="blueviolet">return </div>{`[ `}</div>
+								<div data-line-nr="22">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'HTML5/CSS4/JS/TS', </div>
+								</div>
+								<div data-line-nr="23">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'React.js', </div>
+								</div>
+								<div data-line-nr="24">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'Vue.js', </div>
+								</div>
+								<div data-line-nr="25">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'AngularJs/2', </div>
+								</div>
+								<div data-line-nr="26">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'UI-Automation[Protractor, nightwatchJs, Testcafe]', </div>
+								</div>
+								<div data-line-nr="27">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'UNIT-Testing[Karma/Jasmine]', </div>
+								</div>
+								<div data-line-nr="28">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'SASS', </div>
+								</div>
+								<div data-line-nr="29">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'Jquery', </div>
+								</div>
+								<div data-line-nr="30">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'GIT', </div>
+								</div>
+								<div data-line-nr="31">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'npm/jspm/bower', </div>
+								</div>
+								<div data-line-nr="32">
+									<div className="lightGrey">······</div>
+									<div className="darkGreen">'Bootstrap/Material Design', </div>
+								</div>
+								<div data-line-nr="33"><div className="lightGrey">····</div>{`] `}</div>
+								<div data-line-nr="34"><div className="lightGrey">··</div>{`}`}</div>
+
+							</div>
+						</div>
 					</div>
 				</section>
 				<section className="section3">

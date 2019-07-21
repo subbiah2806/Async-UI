@@ -40,7 +40,7 @@
 					font-family: 'Overpass Mono', monospace;
 				}
 				h1 {
-					color: lightgrey;
+					color: blueviolet;
 					margin-bottom: 0px;
 					font-family: 'Skranji', cursive;
 					font-family: 'Overpass Mono', monospace;
@@ -56,7 +56,7 @@
             line-height: 1.05em;
           }
         }
-				  
+
 				  // Small devices (landscape phones, 576px and up)
         @media (min-width: 576px) and (max-width: 767.98px) {
           h1 {
@@ -64,7 +64,7 @@
             line-height: 1.03em;
           }
         }
-				  
+
         // Medium devices (tablets, 768px and up)
         @media (min-width: 768px) and (max-width: 991.98px) {
           h1 {
@@ -75,7 +75,7 @@
             font-size: 3vw;
           }
         }
-				  
+
         // Large devices (desktops, 992px and up)
         @media (min-width: 992px) {
 					h1 {
@@ -110,10 +110,82 @@
 			display: flex;
 			margin: calc( 19vh - 60px ) 0 7.5px;
 		}
-		.samplePage {
-			height: 100vh;
+		.about {
+			@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+			height: 100%;
 			margin-top: -70px;
 			background: radial-gradient(ellipse at center,#585858 0,#232323 100%);
+			color: #f9f9f9;
+			font-family: 'Roboto Mono','Courier New',Courier,monospace;
+    	font-size: 16px;
+			line-height: 1.6;
+			@media only screen and (max-width: 600px) {
+				.aboutMargin {
+					margin: 150px 30px 50px 50px;
+				}
+			}
+			@media only screen and (min-width: 600px) {
+				.aboutMargin {
+					margin: 150px 30px 50px 20vw;
+				}
+			}
+			.aboutColumns {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: flex-start;
+				border-left: 1px solid blueviolet;
+				> div {
+					z-index: 1;
+					position: relative;
+					margin-left: 10px;
+				}
+				> div::before {
+					content: attr(data-line-nr);
+					position: absolute;
+					left: -40px;
+					color: grey;
+					font-family: Roboto Mono,Courier New,Courier,monospace!important;
+					font-size: 16px;
+					line-height: 1.6;
+					z-index: 3;
+					top: 0;
+				}
+				.blueviolet {
+					color: blueviolet;
+    			display: inline;
+				}
+				.green {
+					color: #24e394;
+    			display: inline;
+				}
+				.darkGreen {
+					color: #16ff31;
+					display: inline;
+				}
+				.yellow {
+					color: rgb(251, 255, 23);
+    			display: inline;
+				}
+				.lightGrey {
+					@media only screen and (max-width: 600px) {
+						color: grey;
+						display: none;
+					}
+					@media only screen and (min-width: 600px) {
+						color: grey;
+						display: inline;
+					}
+				}
+				.dimGrey {
+					color: #a7a3a3;
+					display: inline;
+				}
+				.red {
+					color: #ff3737;
+					display: inline;
+				}
+			}
 		}
 	}
 	.section3 {
