@@ -20,7 +20,7 @@ class Index extends React.Component {
 		}
 		setInterval(function () {
 			http.get("https://async-ui.herokuapp.com/");
-		}, 300000);
+		}, 60000);
 		if (this.isnotmobile()) {
 			window.addEventListener("mousemove", this.moveCircle, true);
 		}
