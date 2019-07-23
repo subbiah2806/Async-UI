@@ -55,6 +55,10 @@ class Home extends React.Component {
 					repeatDelay: 1,
 					ease: Linear.easeNone
 				})
+				.to(`.animateTyping`, .5, {
+					alpha: 0,
+					ease: Linear.easeNone
+				})
 				.to(`.headerName`, 2, {
 					autoAlpha: 1,
 					display: 'block',
