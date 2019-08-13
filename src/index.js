@@ -5,7 +5,6 @@ import Home from './routes/Home';
 import Os from './routes/Os/Os';
 import Froms from './routes/Forms/Forms';
 import VerifyCode from './routes/VerifyCode/VerifyCode';
-import http from 'http';
 import './index.scss';
 import { TweenLite, TextPlugin, CSSPlugin } from "gsap/all";
 const You = lazy(() => import('./routes/You/You'));
@@ -18,9 +17,6 @@ class Index extends React.Component {
 		if (isAndroid) {
 			document.write('<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, height=' + window.innerHeight + '">');
 		}
-		setInterval(function () {
-			http.get("https://async-ui.herokuapp.com/");
-		}, 60000);
 		if (this.isnotmobile()) {
 			window.addEventListener("mousemove", this.moveCircle, true);
 		}
