@@ -266,7 +266,7 @@ class VerifyCode extends React.Component {
 							<br />Carrier rates may apply.
 						</h5>
 						</div>
-						<CircleIcon className="sendbutton" onClick={this.sendMsg} IPStyle={{ cursor: formError ? 'not-allowed' : 'pointer' }} istyle={{ pointerEvents: formError ? 'none' : 'auto', backgroundColor: '#304ffe', height: '65px', width: '65px' }}>
+						<CircleIcon className="sendbutton" onClick={this.sendMsg} IPStyle={{ opacity: formError ? .4 : 1 }} istyle={{ pointerEvents: formError ? 'none' : 'auto', backgroundColor: '#304ffe', height: '65px', width: '65px' }}>
 							<CustomSvg svgName="mat-arrow_forward" style={{ fill: '#304ffe', stroke: 'white', width: "30", height: "30" }} />
 						</CircleIcon>
 					</React.Fragment>}

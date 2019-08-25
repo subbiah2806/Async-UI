@@ -26,7 +26,6 @@
 				}
 			}
 			.svg-hover-not-allowed {
-				cursor: not-allowed;
 				&:hover {
 					transition: filter 250ms;
 					filter: invert(70%);
