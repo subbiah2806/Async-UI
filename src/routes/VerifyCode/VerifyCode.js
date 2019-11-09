@@ -101,7 +101,7 @@ class VerifyCode extends React.Component {
 			this.ifError = {}
 			this.setState({ userInput: ['', '', '', ''], verifyCode: null })
 		} else {
-			this.props.history.push('/')
+			this.props.history.push(process.env.PUBLIC_URL + '/');
 		}
 	}
 	noOfIncorrectEntries = 0;
@@ -132,7 +132,7 @@ class VerifyCode extends React.Component {
 						} else {
 							clearInterval(time);
 							this.setState({ codeVerified: false });
-							this.props.history.push('/')
+							this.props.history.push(process.env.PUBLIC_URL + '/');
 						}
 					}, 1000);
 				} else {

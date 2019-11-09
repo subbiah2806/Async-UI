@@ -132,6 +132,7 @@ export default function SignInSide(props) {
 							variant="contained"
 							color="primary"
 							className={classes.submit}
+							onClick={() => { props.history.push(process.env.PUBLIC_URL + '/') }}
 						>
 							{formName().toUpperCase()}
 						</Button>
