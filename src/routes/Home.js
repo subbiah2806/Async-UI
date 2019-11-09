@@ -44,24 +44,6 @@ class Home extends React.Component {
 					});
 				}, '-=2')
 				.from(".dp", 2, { scale: 1.5, rotation: 180 }, '-=2')
-				.to(`.animateTyping`, 1, {
-					text: `I am Subbiah`,
-					yoyo: true,
-					repeat: 1,
-					repeatDelay: 1,
-					ease: Linear.easeNone
-				}, '-=1')
-				.to(`.animateTyping`, 1, {
-					text: `Web Developer`,
-					yoyo: true,
-					repeat: 1,
-					repeatDelay: 1,
-					ease: Linear.easeNone
-				})
-				.to(`.animateTyping`, .5, {
-					alpha: 0,
-					ease: Linear.easeNone
-				})
 				.to(`.headerName`, 2, {
 					autoAlpha: 1,
 					display: 'block',
@@ -110,8 +92,6 @@ class Home extends React.Component {
 				<section style={bg} className="section1">
 					<div className="content">
 						<div className="content-margin">
-							{/* eslint-disable-next-line */}
-							<h1 className="animateTyping"></h1>
 							<h1 className="headerName">I am Subbiah</h1>
 							<h2 className="headerName">-Web Developer</h2>
 						</div>
