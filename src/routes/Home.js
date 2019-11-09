@@ -8,7 +8,8 @@ import dp from '../assets/dp.jpg';
 import evasHut from '../assets/evas_hut.png';
 import tamil from '../assets/tamilodu_velaiyadu.png';
 import verifyCode from '../assets/verifyCode.png';
-import transition from '../assets/reat-transition.jpg';
+import shopping_cart from '../assets/shopping_cart.png';
+import events from '../assets/events.png';
 import astro from '../assets/astro.png';
 import pagenotfound from '../assets/404.png';
 import deepPurple from '@material-ui/core/colors/deepPurple';
@@ -122,11 +123,12 @@ class Home extends React.Component {
 						<MediaCard id="media1" href="https://tamilodu-vilaiyadu.herokuapp.com/" image={tamil} imagePosition="top" title="Tamilodu Velaiyadu" heading="Tamilodu Velaiyadu" text="A webapp designed with vueJs" />
 						<MediaCard id="media8" href="https://subbiah-astro.herokuapp.com/pageNotFound" image={pagenotfound} heading="404" text="404 Page not found" />
 						<MediaCard id="media7" href="https://subbiah-astro.herokuapp.com/" image={astro} title="Astro" heading="Astro" text="simple VueJs scroll animation website" />
+						<MediaCard id="media6" href="https://subbiah28062.github.io/shopping_cart/" image={shopping_cart} imagePosition="top" title="shopping cart" heading="shopping cart" text="simple shopping cart application" />
 						<MediaCard id="media4" to="/verifyCode" image={verifyCode} imagePosition="top" title="verify code" heading="verify code" text="node.js OPT verification" />
 						<MediaCard id="media2" to="/forms?signup" state="signup" image={signUp} imagePosition="top" title="signup Page" heading="signup Page" text="simple and elegent signup page" />
 						<MediaCard id="media3" to="/forms?login" state="login" image={login} imagePosition="top" title="login Page" heading="login Page" text="simple and elegent login page" />
 						<MediaCard id="media5" href="https://subbiah28062.github.io/Eva-s-hut/" image={evasHut} imagePosition="top" title="EVA'S Hut" heading="EVA'S Hut" text="Static webpage created with vanilla HTML,CSS and Vanilla Js" />
-						<MediaCard id="media6" to="/os" image={transition} imagePosition="center" title="React transitions" heading="React transitions" text="Native application like transission in web UI, swipe left, right and up." />
+						<MediaCard id="media6" href="https://subbiah28062.github.io/vue-reusable-components/" image={events} imagePosition="top" title="events" heading="EVENTS APP" text="Application to maintain list of events and with custom theme" />
 					</div>
 					<div className="about">
 						<div className="aboutMargin">
