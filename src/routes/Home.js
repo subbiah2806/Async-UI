@@ -131,7 +131,7 @@ class Home extends React.Component {
 									<div className="red">this</div>
 									.<div className="green">dateOfBirthTimestamp </div>
 									<div className="red">= </div>
-									<div className="darkGreen">772841730000</div>
+									<div className="darkGreen">772777800000</div>
 								</div>
 								<div data-line-nr="07">
 									<div className="lightGrey">····</div>
